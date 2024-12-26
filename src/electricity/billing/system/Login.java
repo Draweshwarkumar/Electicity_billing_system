@@ -50,6 +50,7 @@ public class Login extends JFrame implements ActionListener {
 
        signupButton = new JButton("Signup");
        signupButton.setBounds(400,215,100,20);
+        signupButton.addActionListener(this);
        add(signupButton);
 
        ImageIcon profileOne = new ImageIcon(ClassLoader.getSystemResource("icons/profile.png"));
@@ -75,6 +76,7 @@ public class Login extends JFrame implements ActionListener {
         }
         else if(e.getSource() == cancelButton){
             setVisible(false);
+
         }
         else if (e.getSource()==signupButton){
             setVisible(false);
