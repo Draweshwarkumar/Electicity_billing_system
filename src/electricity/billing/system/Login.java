@@ -2,14 +2,16 @@ package electricity.billing.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener {
     JTextField userText,passwordText;
     Choice loginChoice;
     JButton loginButton, cancelButton, signupButton;
     Login(){
         super("Login");
-        getContentPane().setBackground(Color.white);
+        getContentPane().setBackground(Color.white );
        JLabel username = new JLabel("UserName");
        username.setBounds(300,60,100,20);
        add(username);
@@ -38,10 +40,12 @@ public class Login extends JFrame {
 
        loginButton = new JButton("Login");
        loginButton.setBounds(330,180,100,20);
+      loginButton.addActionListener(this);
        add(loginButton);
 
        cancelButton = new JButton("Cancel");
        cancelButton.setBounds(460,180,100,20);
+        cancelButton.addActionListener(this);
        add(cancelButton);
 
        signupButton = new JButton("Signup");
@@ -56,11 +60,28 @@ public class Login extends JFrame {
        add(profileLabel);
 
 
+
+
         setSize(640,300);
         setLocation(400,200);
         setLayout(null);
         setVisible(true);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == loginButton){
+
+        }
+        else if(e.getSource() == cancelButton){
+            setVisible(false);
+        }
+        else if (e.getSource()==signupButton){
+            setVisible(false);
+            new Signup();
+        }
+    }
+
     public static void main(String[] args) {
         new Login();
     }
