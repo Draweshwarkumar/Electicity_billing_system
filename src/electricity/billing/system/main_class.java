@@ -113,6 +113,19 @@ public class main_class extends JFrame {
         calculator.setIcon(new ImageIcon(calculatorImage));
         utility.add(calculator);
 
+        JMenu exit = new JMenu("Exit");
+        exit.setFont(new Font("serif",Font.PLAIN,15));
+        menuBar.add(exit);
+
+        JMenuItem eexit = new JMenuItem("Exit");
+        eexit.setFont(new Font("monospaced",Font.PLAIN,14));
+        ImageIcon eexitImg = new ImageIcon(ClassLoader.getSystemResource("icons/icon/exit.png"));
+        Image eexitImage = eexitImg.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT);
+        eexit.setIcon(new ImageIcon(eexitImage));
+        exit.add(eexit);
+
+
+
 
         setLayout(new FlowLayout());
         setVisible(true);
