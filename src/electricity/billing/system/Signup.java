@@ -129,6 +129,11 @@ public class Signup extends JFrame implements ActionListener {
                 String query = null;
                 query = "insert into Signup value('"+smeter+"','"+susername+"','"+sname+"','"+spassword+"','"+sloginAs+"')";
                 c.statement.executeUpdate(query);
+
+                JOptionPane.showMessageDialog(null,"Account created successfully");
+                setVisible(false);
+                new Login();
+
             }catch (Exception E){
                 E.printStackTrace();
             }

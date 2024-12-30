@@ -9,7 +9,7 @@ public class database {
     Statement statement;
     database(){
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bill_system1", "root", "massey1035");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bill_system1", "root", "massey@1035");
             statement = connection.createStatement();
         }
         catch (Exception e){
