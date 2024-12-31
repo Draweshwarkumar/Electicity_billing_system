@@ -13,11 +13,11 @@ public class newCustomer extends JFrame {
         setLocation(400,200);
 
 
-        JLabel heading,customerName,meterNum,address,city,state,email,phone;
+        JLabel heading,customerName,meterNum,address,city,state,email,phone,meternumText;
 
         JButton cancel, next;
 
-        TextField nameText,meternumText,addressText, cityText,stateText,emailText,phoneText;
+        TextField nameText,addressText, cityText,stateText,emailText,phoneText;
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -41,7 +41,7 @@ public class newCustomer extends JFrame {
         meterNum.setBounds(50,120,100,20);
         panel.add(meterNum);
 
-        meternumText = new TextField("");
+        meternumText = new JLabel("");
         meternumText.setBounds(180,120,150,20);
         panel.add(meternumText);
 
@@ -110,7 +110,7 @@ public class newCustomer extends JFrame {
         ImageIcon i3 = new ImageIcon(i2);
         JLabel imgLabel = new JLabel(i3);
         add(imgLabel,"West");
-       
+
 
         setVisible(true);
     }
