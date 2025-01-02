@@ -2,22 +2,23 @@ package electricity.billing.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 import java.util.jar.JarFile;
 
-public class newCustomer extends JFrame {
+public class newCustomer extends JFrame implements ActionListener {
+    JLabel heading,customerName,meterNum,address,city,state,email,phone,meternumText;
+
+    JButton next, cancel;
+
+    TextField nameText,addressText, cityText,stateText,emailText,phoneText;
     newCustomer(){
 
         super("new Customer");
         setSize(700,500);
         setLocation(400,200);
 
-
-        JLabel heading,customerName,meterNum,address,city,state,email,phone,meternumText;
-
-        JButton cancel, next;
-
-        TextField nameText,addressText, cityText,stateText,emailText,phoneText;
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -94,12 +95,14 @@ public class newCustomer extends JFrame {
         next.setBounds(120,390,100,25);
         next.setBackground(Color.black);
         next.setForeground(Color.white);
+        next.addActionListener(this);
         panel.add(next);
 
         cancel = new JButton("Cancel");
         cancel.setBounds(230,390,100,25);
         cancel.setBackground(Color.black);
         cancel.setForeground(Color.white);
+        cancel.addActionListener(this);
         panel.add(cancel);
 
         setLayout(new BorderLayout());
@@ -114,6 +117,36 @@ public class newCustomer extends JFrame {
 
         setVisible(true);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+       if(e.getSource()==next){
+           String sname = nameText.getText();
+           String smeter = meternumText.getText();
+           String saddress = addressText.getText();
+           String scity = cityText.getText();
+           String  sstate = stateText.getText();
+           String  semail = emailText.getText();
+           String sphone = phoneText.getText();
+
+
+           String query_customer = "insert into new_customer values('"+sname+"','"+smeter+"','"+saddress+"','"+scity+"','"+sstate+"','"+semail+"','"+sphone+"')";
+           String query_signup = "insert into Signup values('"+smeter+"','','"+sname+"','','')";
+           try {
+               database c = new database();
+               c.statement.executeUpdate(query_customer);
+               c.statement.executeUpdate(query_signup);
+
+               JOptionPane.showMessageDialog(null,"Customer details added successfully");
+               setVisible(false);
+               new meterInfo(smeter);
+
+           }catch (Exception e3){
+               e3.printStackTrace();
+           }
+       }
+    }
+
     public static void main(String[] args) {
         new newCustomer();
     }
