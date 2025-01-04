@@ -145,6 +145,9 @@ public class newCustomer extends JFrame implements ActionListener {
                e3.printStackTrace();
            }
        }
+       else{
+           setVisible(false);
+       }
     }
 
     public static void main(String[] args) {

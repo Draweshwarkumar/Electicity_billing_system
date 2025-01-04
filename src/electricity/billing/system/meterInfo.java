@@ -95,6 +95,7 @@ public class meterInfo extends JFrame implements ActionListener {
         submit.setBounds(220,390,100,25);
         submit.setBackground(Color.BLACK);
         submit.setForeground(Color.white);
+        submit.addActionListener(this);
         panel.add(submit);
 
         setLayout(new BorderLayout());
@@ -116,7 +117,28 @@ public class meterInfo extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        if(e.getSource() == submit){
+         String smeterNum = meternumber;
+         String smeterLoc = meterLocCho.getSelectedItem();
+         String smeterTyp = meterTypCho.getSelectedItem();
+         String sphaseCode = phaseCodeCho.getSelectedItem();
+         String sbillTyp = billTypCho.getSelectedItem();
+         String sday = "30";
+
+         String query_meterInfo = "insert into meter_info values('"+smeterNum+"','"+smeterLoc+"','"+smeterTyp+"','"+sphaseCode+"','"+sbillTyp+"','"+sday+"')";
+         try {
+           database  c = new database();
+           c.statement.executeUpdate(query_meterInfo);
+
+           JOptionPane.showMessageDialog(null,"Meter Information Submitted successfully");
+           setVisible(false);
+         }catch (Exception e2){
+          e2.printStackTrace();
+         }
+        }
+        else{
+         setVisible(false);
+        }
     }
 
     public static void main(String[] args) {
