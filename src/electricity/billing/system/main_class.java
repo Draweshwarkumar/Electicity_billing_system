@@ -4,7 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class main_class extends JFrame {
-    main_class(){
+
+    String acctype;
+
+    main_class(String acctype){
+        this.acctype = acctype;
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("icons/icon/ebs.png"));
@@ -18,7 +22,7 @@ public class main_class extends JFrame {
 
         JMenu menu = new JMenu("Menu");
         menu.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(menu);
+
 
         JMenuItem newcustomer = new JMenuItem("New Customer");
         newcustomer.setFont(new Font("monospaced",Font.PLAIN,14));
@@ -50,7 +54,7 @@ public class main_class extends JFrame {
 
         JMenu info = new JMenu("Information");
         info.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(info);
+
 
         JMenuItem upinfo = new JMenuItem("Update Information");
         upinfo.setFont(new Font("monospaced",Font.PLAIN,14));
@@ -68,7 +72,7 @@ public class main_class extends JFrame {
 
         JMenu user = new JMenu("User");
         user.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(user);
+
 
         JMenuItem paybill = new JMenuItem("Pay Bill");
         paybill.setFont(new Font("monospaced",Font.PLAIN,14));
@@ -86,7 +90,7 @@ public class main_class extends JFrame {
 
         JMenu bill = new JMenu("Bill");
         bill.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(bill);
+
 
         JMenuItem genBill = new JMenuItem("Generate Bill");
         genBill.setFont(new Font("monospaced",Font.PLAIN,14));
@@ -97,7 +101,7 @@ public class main_class extends JFrame {
 
         JMenu utility = new JMenu("Utility");
         utility.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(utility);
+
 
         JMenuItem notepad = new JMenuItem("Notepad");
         notepad.setFont(new Font("monospaced",Font.PLAIN,14));
@@ -115,7 +119,7 @@ public class main_class extends JFrame {
 
         JMenu exit = new JMenu("Exit");
         exit.setFont(new Font("serif",Font.PLAIN,15));
-        menuBar.add(exit);
+
 
         JMenuItem eexit = new JMenuItem("Exit");
         eexit.setFont(new Font("monospaced",Font.PLAIN,14));
@@ -124,6 +128,16 @@ public class main_class extends JFrame {
         eexit.setIcon(new ImageIcon(eexitImage));
         exit.add(eexit);
 
+        if(acctype.equals("Admin")){
+            menuBar.add(menu);
+        }else{
+            menuBar.add(bill);
+            menuBar.add(user);
+            menuBar.add(info);
+        }
+        menuBar.add(utility);
+        menuBar.add(exit);
+
 
 
 
@@ -131,6 +145,6 @@ public class main_class extends JFrame {
         setVisible(true);
     }
     public static void main(String[] args) {
-        new main_class();
+        new main_class("");
     }
 }
